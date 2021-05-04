@@ -1,3 +1,3 @@
 # beerMe-international
 
-Making a branch ~Peter
+Making my branch ~Peter
