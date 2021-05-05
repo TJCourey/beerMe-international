@@ -4,9 +4,48 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Germania+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Beer Me!</title>
   </head>
   <body>
-    <script src="./script.js"></script>
-  </body>
-</html>
+    <!-- This container will hold just the logo and top image of the site  -->
+    <header class="con1 d-flex justify-content-center ">
+      <img src="./references/beer-me-logo.png" alt="beer-me-logo" width="30%">
+    </header>
+    <br>
+    <!-- This is the container holding all of the input section -->
+    <p class="inputTitle text-center text-white col-md-12 text-center">So what'll it be?</p>
+    <section class="inputcontainer p-5">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+        </div>
+        <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+      </div>
+      <section class="inputcontainer">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+          </div>
+          <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+        </div>
+        <div class="col-md-12 text-center">
+          <button type="button" class="btn btn-primary mb-5">Submit</button>
+        </div>
+      </section>
+      <!-- This is the container holding the previous beer choices -->
+      <section class="lower inputs p-3 mb-2 bg-white text-dark ">
+        <p>This is where previous choices will go </p>
+      </section>
+      <footer>
+        <p><span>$#169</span> Beer Me Internation</p>
+      </footer>
+      
+      
+      
+      
+      <script src="./script.js"></script>
+    </body>
+    </html>
+    

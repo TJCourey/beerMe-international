@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var availLang = [
   "Yoda",
   "Pirate",
@@ -86,3 +87,13 @@ function langUrl(arr, beer) {
   langUrl = `https://api.funtranslations.com/translate/${lang}.json?text=Bartender,%20I%20would%20like%20to%20order%20a%20beer.%20Make%20it%20a%20${beer}`;
   return langUrl;
 }
+=======
+fetch("https://https://api.punkapi.com/v2/beers?page=2&per_page=100")
+  .then(function (response) {
+    console.log(response);
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+  });
+>>>>>>> main
