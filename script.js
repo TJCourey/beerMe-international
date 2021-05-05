@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var availLang = [
   "Yoda",
   "Pirate",
@@ -87,6 +88,9 @@ function langUrl(arr, beer) {
   return langUrl;
 }
 fetch("https://https://api.punkapi.com/v2/beers?page=2&per_page=100")
+=======
+fetch("https://https://api.punkapi.com/v2/beers")
+>>>>>>> feature/punkedAPI
   .then(function (response) {
     console.log(response);
     return response.json();
