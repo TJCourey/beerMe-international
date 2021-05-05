@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+.con1 {
+  background-image: url(./references/beer.jpg);
+  background-size: cover;
+  background-color: #ffba00;
+}
+
+.inputTitle {
+  font-size: 30px;
+  font-family: "Germania One";
+}
+
+body {
+  background-color: #ff7b00;
+}
+
+.btn {
+  width: 50%;
+}
