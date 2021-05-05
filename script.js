@@ -99,8 +99,8 @@ var favBeer = [];
 // }
 
 // fetch to show all availible data from return from PunkedAPI
-fetch("https://api.punkapi.com/v2/beers");
-fetch("https://api.punkapi.com/v2/beers?page=2")
+fetch("https://api.punkapi.com/v2/beers?page=2");
+fetch("https://api.punkapi.com/v2/beers")
   .then(function (response) {
     console.log(response);
     return response.json();
@@ -126,6 +126,18 @@ fetch("https://api.punkapi.com/v2/beers?page=2")
       image.push(data[i].image_url);
     }
 
+    //Determine min and max of abv:
+    var maxAbv = Math.max(...abv);
+    var minAbv = Math.min(...abv);
+    console.log("Max abv: " + maxAbv);
+    console.log("Min abv: " + minAbv);
+
+    //Determine min and max of ibu:
+    var maxIbu = Math.max(...ibu);
+    var minIbu = Math.min(...ibu);
+    console.log("Max ibu: " + maxIbu);
+    console.log("Min abv: " + minIbu);
+
     //determine percentage match to array content ABV
     var abvSliderNumber = 5;
     var a;
@@ -147,7 +159,7 @@ fetch("https://api.punkapi.com/v2/beers?page=2")
       }
 
       //console log to determine output of percentage operation
-      console.log((a / b) * 100);
+      //console.log((a / b) * 100);
 
       //evaluate if the percentage match is  75% or greater, change 75 to whatever percentage accuracy we want
       if ((a / b) * 100 >= 75) {
@@ -177,7 +189,7 @@ fetch("https://api.punkapi.com/v2/beers?page=2")
       }
 
       //console log to determine output of percentage operation
-      console.log((a / b) * 100);
+      //console.log((a / b) * 100);
 
       //evaluate if the percentage match is  75% or greater, change 75 to whatever percentage accuracy we want
       if ((a / b) * 100 >= 75) {
