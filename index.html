@@ -8,6 +8,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Germania+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    
     <title>Beer Me!</title>
   </head>
   <body>
@@ -15,7 +22,6 @@
     <header class="con1 d-flex justify-content-center ">
       <img src="./references/beer-me-logo.png" alt="beer-me-logo" width="30%">
     </header>
-    <br>
     <!-- This is the container holding all of the input section -->
     <p class="inputTitle text-center text-white col-md-12 text-center" id="test">So what'll it be?</p>
     <section class="inputcontainer p-5">
@@ -68,5 +74,25 @@
     <script src="./script.js"></script>
 
 
+
+    <p class="inputTitle text-center text-white text-center">So what'll it be?</p>
+      <div class="slidecontainer col-12">
+        <p class="inputText d-flex justify-content-center">ABV%</p>
+        <input type="range" min="0" max="15" value="" class="slider d-flex justify-content-center" id="ABV">
+        <br>
+        <br>
+        <p class="inputText d-flex justify-content-center">IBU</p>
+        <input type="range" min="1" max="100" value="" class="slider d-flex justify-content-center mb-5" id="IBU"> 
+      </div>
+      <div class="col-md-12 text-center mb-5">
+        <button type="button" class="btn btn-outline-danger">Submit</button>
+        <button type="button" class="btn btn-outline-primary">Random</button>
+        <button type="button" class="btn btn-outline-secondary">Not sure what to pick?</button>
+      </div>
+    </section>
+    <!-- This is the container holding the previous beer choices -->
+    <section class="">
+    </section>
+    <script src="./script.js"></script>
   </body>
 </html>

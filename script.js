@@ -1,3 +1,9 @@
+console.log("Hello World");
+var userInput2 = $("#userInput2");
+var submitBtn = $("#sumbitButton");
+var deck = $(".card-deck");
+var randomBtn = $("#randomButton");
+
 var availLang = [
   "Yoda",
   "Pirate",
@@ -66,6 +72,11 @@ var availLang = [
   "German-accent",
   "Draconic",
 ];
+var beerInfo;
+var favBeer = [];
+
+// var subBut = $(".btn-primary");
+// var prevDis = $(".lower-inputs");
 
 // function translate(requestUrl) {
 //   fetch(requestUrl)
@@ -88,7 +99,8 @@ var availLang = [
 // }
 
 // fetch to show all availible data from return from PunkedAPI
-fetch("https://api.punkapi.com/v2/beers")
+fetch("https://api.punkapi.com/v2/beers");
+fetch("https://api.punkapi.com/v2/beers?page=2")
   .then(function (response) {
     console.log(response);
     return response.json();
@@ -221,3 +233,41 @@ fetch("https://api.punkapi.com/v2/beers")
         finalMatches
     );
   });
+
+function storeFav(obj) {
+  var disArr = JSON.parse(localStorage.getItem("favBeer")) || [];
+  disArr.unshift(obj);
+  if (disArr.length > 3) {
+    disArr.pop();
+  }
+  localStorage.setItem("favBeer", JSON.stringify(disArr));
+}
+
+var displayHist = function () {
+  var disArr = JSON.parse(localStorage.getItem("favBeer")) || [];
+
+  $(".card-deck").each(function (i) {
+    $(this).append(
+      `<div class="card">
+        <div class="card-body">
+        <h3>Beer Name: ${disArr[i].name}</h3>
+        <p>${disArr[i].tagline}</p>
+        <p>${disArr[i].abv}</p>
+        </div>
+      </div>`
+    );
+  });
+};
+function displayResult(data) {
+  $("temp").text(data[0].image_url);
+  $("temp").text(data[0].tagline);
+  $("temp").text(data[0].description);
+  $("temp").text(data[0].abv);
+  $("temp").text(data[0].food_pairing[0]);
+}
+
+//submit click listener
+$("#submitButton").click(function () {});
+
+//Random button click listener
+$("#randomButton").click(function () {});
