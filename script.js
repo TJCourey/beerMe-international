@@ -88,7 +88,6 @@ var availLang = [
 // }
 
 // fetch to show all availible data from return from PunkedAPI
-
 fetch("https://api.punkapi.com/v2/beers")
   .then(function (response) {
     console.log(response);
@@ -97,6 +96,7 @@ fetch("https://api.punkapi.com/v2/beers")
   .then(function (data) {
     console.log(data);
 
+    //These arrays store data extracted from the original response object so there's minimal data to work on
     var name = [];
     var abv = [];
     var ibu = [];
@@ -104,7 +104,7 @@ fetch("https://api.punkapi.com/v2/beers")
     var description = [];
     var image = [];
 
-    // populate variable arrays
+    // populate storage arrays
     for (var i = 0; i < data.length; i++) {
       name.push(data[i].name);
       abv.push(data[i].abv);
@@ -114,7 +114,7 @@ fetch("https://api.punkapi.com/v2/beers")
       image.push(data[i].image_url);
     }
 
-    //determine percentage match to array content
+    //determine percentage match to array content ABV
     var abvSliderNumber = 5;
     var a;
     var b;
@@ -124,6 +124,8 @@ fetch("https://api.punkapi.com/v2/beers")
 
     for (var i = 0; i < data.length; i++) {
       var abvN = abv[i];
+      //comparison to determain which is bigger, the number the user chooses on the slider or the value of alcohol by volume
+      //necessary for computing percentage correctly, smallest number is divided by larger one
       if (abvSliderNumber < abv[i]) {
         a = abvSliderNumber;
         b = abv[i];
@@ -132,20 +134,28 @@ fetch("https://api.punkapi.com/v2/beers")
         b = abvSliderNumber;
       }
 
+      //console log to determine output of percentage operation
       console.log((a / b) * 100);
+
+      //evaluate if the percentage match is  75% or greater, change 75 to whatever percentage accuracy we want
       if ((a / b) * 100 >= 75) {
         console.log("75% match or more! ABV");
+        //abvIndex stores the index number of the result from the abv array
         var abvIndex = abv.indexOf(abvN);
+        //pushes the INDEX NUMBER of the result to a new array
         abvMatches.push(abvIndex);
       }
     }
 
+    //determine percentage match to array content IBU
     var ibuSliderNumber = 50;
     var a;
     var b;
 
     for (var i = 0; i < data.length; i++) {
       var ibuN = ibu[i];
+      //comparison to determain which is bigger, the number the user chooses on the slider or the value of alcohol by volume
+      //necessary for computing percentage correctly, smallest number is divided by larger one
       if (ibuSliderNumber < ibu[i]) {
         a = ibuSliderNumber;
         b = ibu[i];
@@ -154,37 +164,60 @@ fetch("https://api.punkapi.com/v2/beers")
         b = ibuSliderNumber;
       }
 
+      //console log to determine output of percentage operation
       console.log((a / b) * 100);
+
+      //evaluate if the percentage match is  75% or greater, change 75 to whatever percentage accuracy we want
       if ((a / b) * 100 >= 75) {
         console.log("75% match or more! IBU");
 
+        //ibuIndex stores the index number of the result from the abv array
         var ibuIndex = ibu.indexOf(ibuN);
+        //pushes the INDEX NUMBER of the result to a new array
         ibuMatches.push(ibuIndex);
       }
 
+      //console log the content of the match arrays
       console.log("ABV matches: " + abvMatches);
       console.log("IBU matches: " + ibuMatches);
+
+      var abvMatchesUnique = [...new Set(abvMatches)];
+      var ibuMatchesUnique = [...new Set(ibuMatches)];
+
+      //remove duplicates
+      console.log(abvMatchesUnique + " abvSET");
+      console.log(ibuMatchesUnique + " ibuSET");
     }
 
-    var lArrary;
+    //conditionals to determin matches between BOTH match arrays for final results
+    var lArray;
     var sArray;
+    var finalMatches = [];
 
-    if (abvMatches.length > ibuMatches.length) {
-      lArrary = abvMatches;
-      sArray = ibuMatches;
+    if (abvMatchesUnique.length > ibuMatchesUnique.length) {
+      lArray = abvMatchesUnique;
+      sArray = ibuMatchesUnique;
     } else {
-      lArrary = ibuMatches;
-      sArray = abvMatches;
+      lArray = ibuMatchesUnique;
+      sArray = abvMatchesUnique;
     }
 
-    // var matches = [];
+    //this for loop should itterate though all of the contents of the larger array,
+    //determin if there is a match,
+    //push that match to the finalMatches array
+    for (var i = 0; i < lArray.length; i++) {
+      var n = sArray.includes(lArray[i]);
 
-    // for (var i = 0; i < lArrary.length; i++) {
-    //   for (var j = 0; j < sArray.length; j++) {
-    //     if (lArrary[i] === sArray[j]) {
-    //       matches.push(lArrary[i]);
-    //       console.log("Final matches: " + matches);
-    //     }
-    //   }
-    // }
+      if (n) {
+        console.log("found a match between the matches arrays!");
+        finalMatches.push(sArray[i]);
+      }
+    }
+
+    //This outputs the list of final matches between both criteria!!!  use array "finalMatches" to select beers
+    //from object using the numbers in finalMatches as index numbers in the original return object!
+    console.log(
+      "The following index numbers are a match for both user criteria: " +
+        finalMatches
+    );
   });
