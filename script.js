@@ -1,3 +1,9 @@
+console.log("Hello World");
+var userInput2 = $("#userInput2");
+var submitBtn = $("#sumbitButton");
+var deck = $(".card-deck");
+var randomBtn = $("#randomButton");
+
 var availLang = [
   "Yoda",
   "Pirate",
@@ -132,3 +138,9 @@ function displayResult(data) {
   $("temp").text(data[0].abv);
   $("temp").text(data[0].food_pairing[0]);
 }
+
+//submit click listener
+$("#submitButton").click(function () {});
+
+//Random button click listener
+$("#randomButton").click(function () {});
