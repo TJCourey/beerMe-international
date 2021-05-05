@@ -1,3 +1,9 @@
+console.log("Hello World");
+var userInput2 = $("#userInput2");
+var submitBtn = $("#sumbitButton");
+var deck = $(".card-deck");
+var randomBtn = $("#randomButton");
+
 var availLang = [
   "Yoda",
   "Pirate",
@@ -69,8 +75,21 @@ var availLang = [
 var beerInfo;
 var favBeer = [];
 
+<<<<<<< HEAD
 // var subBut = $(".btn-primary");
 // var prevDis = $(".lower-inputs");
+=======
+// function translate(requestUrl) {
+//   fetch(requestUrl)
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       console.log(data);
+//     });
+// }
+// translate(langUrl(availLang, "coors"));
+>>>>>>> main
 
 // function translate(requestUrl) {
 //   fetch(requestUrl)
@@ -83,6 +102,7 @@ var favBeer = [];
 // }
 // translate(langUrl(availLang, "coors"));
 
+<<<<<<< HEAD
 // function langUrl(arr, beer) {
 //   let r = Math.floor(Math.random() * arr.length);
 //   lang = arr[r];
@@ -91,6 +111,11 @@ var favBeer = [];
 //   langUrl = `https://api.funtranslations.com/translate/${lang}.json?text=Bartender,%20I%20would%20like%20to%20order%20a%20beer.%20Make%20it%20a%20${beer}`;
 //   return langUrl;
 // }
+=======
+  langUrl = `https://api.funtranslations.com/translate/${lang}.json?text=Bartender,%20I%20would%20like%20to%20order%20a%20beer.%20Make%20it%20a%20${beer}`;
+  return langUrl;
+}
+>>>>>>> main
 fetch("https://api.punkapi.com/v2/beers?page=2")
   .then(function (response) {
     console.log(response);
@@ -101,6 +126,7 @@ fetch("https://api.punkapi.com/v2/beers?page=2")
     beerInfo = data;
   });
 
+<<<<<<< HEAD
 function storeFav(obj) {
   var disArr = JSON.parse(localStorage.getItem("favBeer")) || [];
   disArr.unshift(obj);
@@ -132,3 +158,10 @@ function displayResult(data) {
   $("temp").text(data[0].abv);
   $("temp").text(data[0].food_pairing[0]);
 }
+=======
+//submit click listener
+$("#submitBtton").click(function () {});
+
+//Random button click listener
+$("#randomButton").click(function () {});
+>>>>>>> main

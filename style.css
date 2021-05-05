@@ -3,20 +3,34 @@
 }
 
 .con1 {
-  background-image: url(./references/beer.jpg);
+  background-image: url(./references/beerfest.jpg);
   background-size: cover;
   background-color: #ffba00;
 }
 
 .inputTitle {
-  font-size: 30px;
+  font-size: 70px;
   font-family: "Germania One";
 }
 
 body {
-  background-color: #ff7b00;
+  border: solid #29b6f6 10px;
+  background-position: center center;
+  background-image: linear-gradient(#ffb449, #fddd5c, #ffb449);
 }
 
 .btn {
-  width: 50%;
+  font-family: "Germania One";
+  width: 25%;
+  background-color: #ffb449;
+}
+
+.slider {
+  width: 75%;
+  margin-left: 13%;
+}
+
+.inputText {
+  color: #29b6f6;
+  font-family: "Germania One";
 }
