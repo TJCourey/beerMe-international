@@ -8,6 +8,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Germania+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    
     <title>Beer Me!</title>
   </head>
   <body>
@@ -22,16 +29,16 @@
       <div class="input-group mb-3">
         <div class="input-group-prepend">
         </div>
-        <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+        <input id="userInput" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
       </div>
       <section class="inputcontainer">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
           </div>
-          <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+          <input id="userInput2" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
         </div>
         <div class="col-md-12 text-center">
-          <button type="button" class="btn btn-primary mb-5">Submit</button>
+          <button id="submitButton" type="button" class="btn btn-primary mb-5">Submit</button>
         </div>
       </section>
       <!-- This is the container holding the previous beer choices -->
