@@ -1,9 +1,3 @@
-console.log("Hello World");
-var userInput2 = $("#userInput2");
-var submitBtn = $("#sumbitButton");
-var deck = $(".card-deck");
-var randomBtn = $("#randomButton");
-
 var availLang = [
   "Yoda",
   "Pirate",
@@ -72,6 +66,11 @@ var availLang = [
   "German-accent",
   "Draconic",
 ];
+var beerInfo;
+var favBeer = [];
+
+// var subBut = $(".btn-primary");
+// var prevDis = $(".lower-inputs");
 
 // function translate(requestUrl) {
 //   fetch(requestUrl)
@@ -84,14 +83,14 @@ var availLang = [
 // }
 // translate(langUrl(availLang, "coors"));
 
-function langUrl(arr, beer) {
-  let r = Math.floor(Math.random() * arr.length);
-  lang = arr[r];
-  console.log(lang);
+// function langUrl(arr, beer) {
+//   let r = Math.floor(Math.random() * arr.length);
+//   lang = arr[r];
+//   console.log(lang);
 
-  langUrl = `https://api.funtranslations.com/translate/${lang}.json?text=Bartender,%20I%20would%20like%20to%20order%20a%20beer.%20Make%20it%20a%20${beer}`;
-  return langUrl;
-}
+//   langUrl = `https://api.funtranslations.com/translate/${lang}.json?text=Bartender,%20I%20would%20like%20to%20order%20a%20beer.%20Make%20it%20a%20${beer}`;
+//   return langUrl;
+// }
 fetch("https://api.punkapi.com/v2/beers?page=2")
   .then(function (response) {
     console.log(response);
@@ -99,10 +98,37 @@ fetch("https://api.punkapi.com/v2/beers?page=2")
   })
   .then(function (data) {
     console.log(data);
+    beerInfo = data;
   });
 
-//submit click listener
-$("#submitBtton").click(function () {});
+function storeFav(obj) {
+  var disArr = JSON.parse(localStorage.getItem("favBeer")) || [];
+  disArr.unshift(obj);
+  if (disArr.length > 3) {
+    disArr.pop();
+  }
+  localStorage.setItem("favBeer", JSON.stringify(disArr));
+}
 
-//Random button click listener
-$("#randomButton").click(function () {});
+var displayHist = function () {
+  var disArr = JSON.parse(localStorage.getItem("favBeer")) || [];
+
+  $(".card-deck").each(function (i) {
+    $(this).append(
+      `<div class="card">
+        <div class="card-body">
+        <h3>Beer Name: ${disArr[i].name}</h3>
+        <p>${disArr[i].tagline}</p>
+        <p>${disArr[i].abv}</p>
+        </div>
+      </div>`
+    );
+  });
+};
+function displayResult(data) {
+  $("temp").text(data[0].image_url);
+  $("temp").text(data[0].tagline);
+  $("temp").text(data[0].description);
+  $("temp").text(data[0].abv);
+  $("temp").text(data[0].food_pairing[0]);
+}
