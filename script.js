@@ -5,6 +5,11 @@ var deck = $(".card-deck");
 var randomBtn = $("#randomButton");
 var abvRequest;
 var ibuRequest;
+var beerDescription = $("#beerDesc");
+var snack = $("#snack");
+var tagline = $("#tagline");
+var image_url = $("#image_url");
+
 var availLang = [
   "Yoda",
   "Pirate",
@@ -291,11 +296,34 @@ function displayResult(data) {
   $("temp").text(data[0].food_pairing[0]);
 }
 
+function getRandomBeer() {
+  fetch("https://api.punkapi.com/v2/beers?per_page=50")
+    .then(function (response) {
+      console.log(response);
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+
+      var randomBeer = Math.floor(Math.random() * data.length);
+      //console.log(randomBeer + " Are we getting this?");
+      beerDescription.text(data[randomBeer - 1].description);
+      snack.text(data[randomBeer - 1].food_pairing[0]);
+      tagline.text(data[randomBeer - 1].tagline);
+      image_url.attr("src", data[randomBeer - 1].image_url);
+      //console.log("Name: " + data[randomBeer - 1].name);
+      //console.log("description: " + data[randomBeer - 1].description);
+      //console.log("Tagline: " + data[randomBeer - 1].tagline);
+    });
+}
+
 //submit click listener
 $("#submitButton").click(function () {});
 
 //Random button click listener
-$("#randomButton").click(function () {});
+$("#randomButton").click(function () {
+  getRandomBeer();
+});
 
 // abv Slider listener
 $(".abv-slider").on({
@@ -311,22 +339,5 @@ $(".ibu-slider").on({
     console.log(ibuRequest, "requested ibu");
   },
 });
-
-function getRandomBeer() {
-  fetch("https://api.punkapi.com/v2/beers?per_page=50")
-    .then(function (response) {
-      console.log(response);
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-
-      var randomBeer = Math.floor(Math.random() * data.length);
-      console.log(randomBeer + " Are we getting this?");
-      console.log("Name: " + data[randomBeer - 1].name);
-      console.log("description: " + data[randomBeer - 1].description);
-      console.log("Tagline: " + data[randomBeer - 1].tagline);
-    });
-}
 
 getRandomBeer();
