@@ -109,28 +109,26 @@ var favBeer = [];
 // fetch to show all availible data from return from PunkedAPI
 
 var finalMatchesArr = [];
-var submitPressed = true;
+var submitPressed = false;
 
 function fetchData(condition) {
-  var obj;
+  fetch("https://api.punkapi.com/v2/beers")
+    .then(function (response) {
+      console.log(response);
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
 
-  if (!condition) {
-    fetch("https://api.punkapi.com/v2/beers")
-      .then(function (response) {
-        console.log(response);
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(data);
+      //These arrays store data extracted from the original response object so there's minimal data to work on
+      var name = [];
+      var abv = [];
+      var ibu = [];
+      var ebc = [];
+      var description = [];
+      var image = [];
 
-        //These arrays store data extracted from the original response object so there's minimal data to work on
-        var name = [];
-        var abv = [];
-        var ibu = [];
-        var ebc = [];
-        var description = [];
-        var image = [];
-
+      if (!condition) {
         // populate storage arrays
         for (var i = 0; i < data.length; i++) {
           name.push(data[i].name);
@@ -152,8 +150,8 @@ function fetchData(condition) {
         var minIbu = Math.min(...ibu);
         console.log("Max ibu: " + maxIbu);
         console.log("Min abv: " + minIbu);
-      });
-  }
+      }
+    });
   // Split off to separate function HERE
 
   if (condition) {
