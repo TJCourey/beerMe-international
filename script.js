@@ -113,7 +113,7 @@ var favBeer = [];
 // fetch to show all availible data from return from PunkedAPI
 
 var finalMatchesArr = [];
-var submitPressed = true;
+var submitPressed = false;
 //var checkFalse = false;
 
 function fetchData(condition) {
@@ -278,7 +278,7 @@ function fetchData(condition) {
     });
 }
 
-fetchData(checkFalse);
+//fetchData(checkFalse);
 
 fetchData(submitPressed);
 
