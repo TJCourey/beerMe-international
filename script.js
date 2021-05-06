@@ -106,7 +106,7 @@ var favBeer = [];
 // object that are a CERTAIN PERCENTAGE match for both ABV and IBU user selected
 
 // fetch to show all availible data from return from PunkedAPI
-fetch("https://api.punkapi.com/v2/beers")
+fetch("https://api.punkapi.com/v2/beers?per_page=50")
   .then(function (response) {
     console.log(response);
     return response.json();
@@ -291,3 +291,22 @@ $("#submitButton").click(function () {});
 
 //Random button click listener
 $("#randomButton").click(function () {});
+
+function getRandomBeer() {
+  fetch("https://api.punkapi.com/v2/beers?per_page=50")
+    .then(function (response) {
+      console.log(response);
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+
+      var randomBeer = Math.floor(Math.random() * data.length);
+      console.log(randomBeer + " Are we getting this?");
+      console.log("Name: " + data[randomBeer - 1].name);
+      console.log("description: " + data[randomBeer - 1].description);
+      console.log("Tagline: " + data[randomBeer - 1].tagline);
+    });
+}
+
+getRandomBeer();
