@@ -41,8 +41,9 @@ body {
 }
 
 .beerImage {
-  width: 40%;
-  height: auto;
+  width: auto;
+  height: 30%;
+  /* transform: rotate(90deg); */
 }
 
 .beerDisplay {
