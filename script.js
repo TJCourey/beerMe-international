@@ -136,14 +136,18 @@ fetch("https://api.punkapi.com/v2/beers?per_page=50")
     var maxAbv = Math.max(...abv);
     var minAbv = Math.min(...abv);
     console.log("Max abv: " + maxAbv);
+    $(".abv-slider").attr("max", maxAbv);
     console.log("Min abv: " + minAbv);
+    $(".abv-slider").attr("min", minAbv);
 
     //Determine min and max of ibu:
     var maxIbu = Math.max(...ibu);
     var minIbu = Math.min(...ibu);
     console.log("Max ibu: " + maxIbu);
+    $(".ibu-slider").attr("max", maxIbu);
     console.log("Min abv: " + minIbu);
-
+    $(".ibu-slider").attr("min", minIbu);
+    // code will split here
     //determine percentage match to array content ABV
     var abvSliderNumber = 5;
     var a;
@@ -291,6 +295,21 @@ $("#submitButton").click(function () {});
 
 //Random button click listener
 $("#randomButton").click(function () {});
+
+// abv Slider listener
+$(".abv-slider").on({
+  change: function () {
+    var abvRequest = $(".abv-slider").val();
+    console.log(abvRequest, "requested abv");
+  },
+});
+// ibu slider listener
+$(".ibu-slider").on({
+  change: function () {
+    var ibuRequest = $(".ibu-slider").val();
+    console.log(ibuRequest, "requested ibu");
+  },
+});
 
 function getRandomBeer() {
   fetch("https://api.punkapi.com/v2/beers?per_page=50")
