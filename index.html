@@ -4,16 +4,24 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Germania+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Germania+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>Beer Me!</title>
   </head>
   <body>
     <!-- This container will hold just the logo and top image of the site  -->
-    <header class="con1 d-flex justify-content-center ">
-      <img src="./references/beer-me-logo.png" alt="beer-me-logo" width="30%">
+    <header class="con1 d-flex justify-content-center">
+      <img src="./references/beer-me-logo.png" alt="beer-me-logo" width="30%" />
     </header>
     <!-- <p class="inputTitle text-center text-white text-center">So what'll it be?</p>
     <div class="slidecontainer col-12">
@@ -30,47 +38,57 @@
       <button type="button" class="btn btn-outline-secondary">Not sure what to pick?</button>
     </div>
   </section> -->
-  <!-- This is the container holding the previous beer choices -->
-  <!-- <section class="card-deck">
+    <!-- This is the container holding the previous beer choices -->
+    <!-- <section class="card-deck">
   </section> -->
-  <!-- This is where the next page will generate. The first class is the placeholder-->
-  <section>
-    <div class="beerDisplay mt-4">
-      <!--this is the beer image -->
-      <h1 class="displayHeader text-white text-center"> It's a Match!</h1>
-      <div class="beerOnDisplay text-center">
-        <img class= "beerImage img-responsive rounded mx-auto d-block img-thumbnail" src="./references/placeholder-beer-image.jpg" alt="the current random beer">
-      </div>
-      <!-- here is the beer tag -->
-      <div class="beerTag">
-        <p class="tagText text-center text-white"> SEXY BEAST </p>
-        <div class="col-md-12 text-center mb-1">
-          <!-- this is the green and red buttons -->
-          <button type="button" class="btn btn-success ">Keep</button>
-          <button type="button" class="btn btn-danger">Pass</button>
+    <!-- This is where the next page will generate. The first class is the placeholder-->
+    <section>
+      <div class="beerDisplay mt-4">
+        <!--this is the beer image -->
+        <h1 class="displayHeader text-white text-center">It's a Match!</h1>
+        <div class="beerOnDisplay text-center">
+          <img
+            class="beerImage img-responsive rounded mx-auto d-block img-thumbnail"
+            id="image_url"
+            src=""
+            alt=""
+          />
+        </div>
+        <!-- here is the beer tag -->
+        <div class="beerTag">
+          <p class="tagText text-center text-white" id="tagline"></p>
+          <div class="col-md-12 text-center mb-1">
+            <!-- this is the green and red buttons -->
+            <button type="button" class="btn btn-success">Keep</button>
+            <button type="button" class="btn btn-danger">Pass</button>
+          </div>
+        </div>
+        <!-- the beers desription is here -->
+        <div class="beerDescription text-white text-left pt-4 pl-4 pr-4">
+          <p id="beerDesc"></p>
+        </div>
+        <!--food pairing -->
+        <div class="foodText food pairing text-orange">
+          <h2 class="foodText text-center pl-2 pr-2">
+            <u>Something to snack on</u>
+          </h2>
+          <p class="text-center" id="snack">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum enim
+            fugit quia aspernatur ducimus impedit.
+          </p>
         </div>
       </div>
-      <!-- the beers desription is here -->
-      <div class="beerDescription text-white text-left pt-4 pl-4 pr-4">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum fugiat eum voluptate sint? Et odio inventore, sit iste distinctio numquam nobis suscipit pariatur voluptatibus quidem eius quibusdam ducimus beatae repellat corporis, nisi, quis labore quam asperiores? Iusto necessitatibus itaque aperiam, dolores sunt reiciendis, quisquam vel blanditiis quae illo reprehenderit officiis.</p> 
-      </div>
-      <!--food pairing -->
-      <div class="foodText food pairing text-orange">
-        <h2 class="foodText text-center pl-2 pr-2"><u>Something to snack on</u></h2>
-        <p class="text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum enim fugit quia aspernatur ducimus impedit.</p>
-      </div>
-    </div>
-  </section>
-  <script
-    src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-    crossorigin="anonymous"
-  ></script>
-  <script
-  src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
-  integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
-  crossorigin="anonymous"></script>
-  <script src="./script.js"></script>
-</body>
-
+    </section>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+      integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./script.js"></script>
+  </body>
 </html>
