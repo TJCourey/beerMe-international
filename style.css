@@ -52,4 +52,13 @@ body {
 
 .foodText {
   color: #29b6f6;
+  font-size: 25px;
+}
+
+.beerDescription {
+  font-size: 25px;
+}
+
+.beerTag {
+  font-size: 20px;
 }

@@ -3,6 +3,8 @@ var userInput2 = $("#userInput2");
 var submitBtn = $("#sumbitButton");
 var deck = $(".card-deck");
 var randomBtn = $("#randomButton");
+var abvRequest;
+var ibuRequest;
 var beerDescription = $("#beerDesc");
 var snack = $("#snack");
 var tagline = $("#tagline");
@@ -165,7 +167,7 @@ function fetchData(condition) {
       console.log("FIND MATCHES");
 
       //determine percentage match to array content ABV
-      var abvSliderNumber = 5;
+      var abvSliderNumber = abvRequest;
       var a;
       var b;
 
@@ -200,7 +202,7 @@ function fetchData(condition) {
       }
 
       //determine percentage match to array content IBU
-      var ibuSliderNumber = 50;
+      var ibuSliderNumber = ibuRequest;
       var a;
       var b;
 
