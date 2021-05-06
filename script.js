@@ -75,9 +75,6 @@ var availLang = [
 var beerInfo;
 var favBeer = [];
 
-// var subBut = $(".btn-primary");
-// var prevDis = $(".lower-inputs");
-
 // function translate(requestUrl) {
 //   fetch(requestUrl)
 //     .then(function (response) {
@@ -109,7 +106,6 @@ var favBeer = [];
 // object that are a CERTAIN PERCENTAGE match for both ABV and IBU user selected
 
 // fetch to show all availible data from return from PunkedAPI
-fetch("https://api.punkapi.com/v2/beers?page=2");
 fetch("https://api.punkapi.com/v2/beers")
   .then(function (response) {
     console.log(response);
