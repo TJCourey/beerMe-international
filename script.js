@@ -322,3 +322,37 @@ $("#submitButton").click(function () {});
 
 //Random button click listener
 $("#randomButton").click(function () {});
+
+// abv Slider listener
+$(".abv-slider").on({
+  change: function () {
+    var abvRequest = $(".abv-slider").val();
+    console.log(abvRequest, "requested abv");
+  },
+});
+// ibu slider listener
+$(".ibu-slider").on({
+  change: function () {
+    var ibuRequest = $(".ibu-slider").val();
+    console.log(ibuRequest, "requested ibu");
+  },
+});
+
+function getRandomBeer() {
+  fetch("https://api.punkapi.com/v2/beers?per_page=50")
+    .then(function (response) {
+      console.log(response);
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+
+      var randomBeer = Math.floor(Math.random() * data.length);
+      console.log(randomBeer + " Are we getting this?");
+      console.log("Name: " + data[randomBeer - 1].name);
+      console.log("description: " + data[randomBeer - 1].description);
+      console.log("Tagline: " + data[randomBeer - 1].tagline);
+    });
+}
+
+getRandomBeer();
