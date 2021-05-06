@@ -40,8 +40,15 @@ body {
   font-family: "Germania One";
 }
 
-.mod1 {
-  font-size: 150%;
-  background-position: center center;
-  background-image: linear-gradient(#29b6f6, white, #29b6f6);
+.beerImage {
+  width: 40%;
+  height: auto;
+}
+
+.beerDisplay {
+  font-family: "Germania One";
+}
+
+.foodText {
+  color: #29b6f6;
 }
