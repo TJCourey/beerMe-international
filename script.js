@@ -104,51 +104,59 @@ var favBeer = [];
 // ibuSlider type INT, should recieve user selection of ibu
 // finalMatches type ARRAY, should contain INDEX NUMBER for use in response (cont'd)
 // object that are a CERTAIN PERCENTAGE match for both ABV and IBU user selected
+// submitPressed type bool, if true matches are searched for if false matches are not found
 
 // fetch to show all availible data from return from PunkedAPI
 
 var finalMatchesArr = [];
+var submitPressed = true;
 
-fetch("https://api.punkapi.com/v2/beers")
-  .then(function (response) {
-    console.log(response);
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
+function fetchData(condition) {
+  var obj;
 
-    //These arrays store data extracted from the original response object so there's minimal data to work on
-    var name = [];
-    var abv = [];
-    var ibu = [];
-    var ebc = [];
-    var description = [];
-    var image = [];
+  if (!condition) {
+    fetch("https://api.punkapi.com/v2/beers")
+      .then(function (response) {
+        console.log(response);
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data);
 
-    // populate storage arrays
-    for (var i = 0; i < data.length; i++) {
-      name.push(data[i].name);
-      abv.push(data[i].abv);
-      ibu.push(data[i].ibu);
-      ebc.push(data[i].ebc);
-      description.push(data[i].description);
-      image.push(data[i].image_url);
-    }
+        //These arrays store data extracted from the original response object so there's minimal data to work on
+        var name = [];
+        var abv = [];
+        var ibu = [];
+        var ebc = [];
+        var description = [];
+        var image = [];
 
-    //Determine min and max of abv:
-    var maxAbv = Math.max(...abv);
-    var minAbv = Math.min(...abv);
-    console.log("Max abv: " + maxAbv);
-    console.log("Min abv: " + minAbv);
+        // populate storage arrays
+        for (var i = 0; i < data.length; i++) {
+          name.push(data[i].name);
+          abv.push(data[i].abv);
+          ibu.push(data[i].ibu);
+          ebc.push(data[i].ebc);
+          description.push(data[i].description);
+          image.push(data[i].image_url);
+        }
 
-    //Determine min and max of ibu:
-    var maxIbu = Math.max(...ibu);
-    var minIbu = Math.min(...ibu);
-    console.log("Max ibu: " + maxIbu);
-    console.log("Min abv: " + minIbu);
+        //Determine min and max of abv:
+        var maxAbv = Math.max(...abv);
+        var minAbv = Math.min(...abv);
+        console.log("Max abv: " + maxAbv);
+        console.log("Min abv: " + minAbv);
 
-    // Split off to separate function HERE
+        //Determine min and max of ibu:
+        var maxIbu = Math.max(...ibu);
+        var minIbu = Math.min(...ibu);
+        console.log("Max ibu: " + maxIbu);
+        console.log("Min abv: " + minIbu);
+      });
+  }
+  // Split off to separate function HERE
 
+  if (condition) {
     //determine percentage match to array content ABV
     var abvSliderNumber = 5;
     var a;
@@ -257,13 +265,17 @@ fetch("https://api.punkapi.com/v2/beers")
       "The following index numbers are a match for both user criteria: " +
         finalMatchesArr
     );
+  }
 
-    getFinalBeer();
-  });
+  getFinalBeer();
+}
+
+fetchData(submitPressed);
+
+var beer = finalMatchesArr;
 
 //selection for beer choosen!!!
 function getFinalBeer() {
-  var beer = finalMatchesArr;
   console.log(beer + " this is the final beer");
 
   let r = beer[Math.floor(Math.random() * beer.length)];
