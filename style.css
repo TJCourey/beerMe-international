@@ -14,7 +14,6 @@
 }
 
 body {
-  border: solid #29b6f6 10px;
   background-position: center center;
   background-image: linear-gradient(#ffb449, #fddd5c, #ffb449);
 }
@@ -31,6 +30,18 @@ body {
 }
 
 .inputText {
+  font-size: 250%;
   color: #29b6f6;
   font-family: "Germania One";
+}
+.inputText2 {
+  font-size: 150%;
+  color: white;
+  font-family: "Germania One";
+}
+
+.mod1 {
+  font-size: 150%;
+  background-position: center center;
+  background-image: linear-gradient(#29b6f6, white, #29b6f6);
 }
