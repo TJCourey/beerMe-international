@@ -296,6 +296,21 @@ $("#submitButton").click(function () {});
 //Random button click listener
 $("#randomButton").click(function () {});
 
+// abv Slider listener
+$(".abv-slider").on({
+  change: function () {
+    var abvRequest = $(".abv-slider").val();
+    console.log(abvRequest, "requested abv");
+  },
+});
+// ibu slider listener
+$(".ibu-slider").on({
+  change: function () {
+    var ibuRequest = $(".ibu-slider").val();
+    console.log(ibuRequest, "requested ibu");
+  },
+});
+
 function getRandomBeer() {
   fetch("https://api.punkapi.com/v2/beers?per_page=50")
     .then(function (response) {
