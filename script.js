@@ -95,6 +95,16 @@ var favBeer = [];
 //   return langUrl;
 // }
 
+// The following local variables are created for output:
+// minAbv type INT, stores minimum abv of all beers recived from response
+// maxAbv type INT, stores maximum abv of all beers recived from response
+// minIbu type INT, stores minimum ibu of all beers received from response
+// maxIbu type INT, stores maximum ibu of all beers received from response
+// abvSlider type INT, should recieve user selection of abv
+// ibuSlider type INT, should recieve user selection of ibu
+// finalMatches type ARRAY, should contain INDEX NUMBER for use in response (cont'd)
+// object that are a CERTAIN PERCENTAGE match for both ABV and IBU user selected
+
 // fetch to show all availible data from return from PunkedAPI
 fetch("https://api.punkapi.com/v2/beers")
   .then(function (response) {
@@ -122,6 +132,18 @@ fetch("https://api.punkapi.com/v2/beers")
       image.push(data[i].image_url);
     }
 
+    //Determine min and max of abv:
+    var maxAbv = Math.max(...abv);
+    var minAbv = Math.min(...abv);
+    console.log("Max abv: " + maxAbv);
+    console.log("Min abv: " + minAbv);
+
+    //Determine min and max of ibu:
+    var maxIbu = Math.max(...ibu);
+    var minIbu = Math.min(...ibu);
+    console.log("Max ibu: " + maxIbu);
+    console.log("Min abv: " + minIbu);
+
     //determine percentage match to array content ABV
     var abvSliderNumber = 5;
     var a;
@@ -143,8 +165,9 @@ fetch("https://api.punkapi.com/v2/beers")
       }
 
       //console log to determine output of percentage operation
-      console.log((a / b) * 100);
+      //console.log((a / b) * 100);
 
+      //CHANGE MATCH PERCENTAGE HERE!!!
       //evaluate if the percentage match is  75% or greater, change 75 to whatever percentage accuracy we want
       if ((a / b) * 100 >= 75) {
         console.log("75% match or more! ABV");
@@ -173,8 +196,9 @@ fetch("https://api.punkapi.com/v2/beers")
       }
 
       //console log to determine output of percentage operation
-      console.log((a / b) * 100);
+      //console.log((a / b) * 100);
 
+      //CHANGE MATCH PERCENTAGE HERE!!!
       //evaluate if the percentage match is  75% or greater, change 75 to whatever percentage accuracy we want
       if ((a / b) * 100 >= 75) {
         console.log("75% match or more! IBU");
