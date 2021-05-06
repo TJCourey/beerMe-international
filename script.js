@@ -106,6 +106,9 @@ var favBeer = [];
 // object that are a CERTAIN PERCENTAGE match for both ABV and IBU user selected
 
 // fetch to show all availible data from return from PunkedAPI
+
+var finalMatchesArr = [];
+
 fetch("https://api.punkapi.com/v2/beers")
   .then(function (response) {
     console.log(response);
@@ -143,6 +146,8 @@ fetch("https://api.punkapi.com/v2/beers")
     var minIbu = Math.min(...ibu);
     console.log("Max ibu: " + maxIbu);
     console.log("Min abv: " + minIbu);
+
+    // Split off to separate function HERE
 
     //determine percentage match to array content ABV
     var abvSliderNumber = 5;
@@ -242,7 +247,7 @@ fetch("https://api.punkapi.com/v2/beers")
 
       if (n) {
         console.log("found a match between the matches arrays!");
-        finalMatches.push(sArray[i]);
+        finalMatchesArr.push(sArray[i]);
       }
     }
 
@@ -250,9 +255,25 @@ fetch("https://api.punkapi.com/v2/beers")
     //from object using the numbers in finalMatches as index numbers in the original return object!
     console.log(
       "The following index numbers are a match for both user criteria: " +
-        finalMatches
+        finalMatchesArr
     );
+
+    getFinalBeer();
   });
+
+//selection for beer choosen!!!
+function getFinalBeer() {
+  var beer = finalMatchesArr;
+  console.log(beer + " this is the final beer");
+
+  let r = beer[Math.floor(Math.random() * beer.length)];
+  console.log("this is the index of the final beer" + r);
+  var selection = beer[r];
+
+  console.log("This is the beer selected: " + selection);
+
+  return selection;
+}
 
 function storeFav(obj) {
   var disArr = JSON.parse(localStorage.getItem("favBeer")) || [];
