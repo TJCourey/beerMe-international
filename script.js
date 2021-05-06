@@ -3,7 +3,8 @@ var userInput2 = $("#userInput2");
 var submitBtn = $("#sumbitButton");
 var deck = $(".card-deck");
 var randomBtn = $("#randomButton");
-
+var abvRequest;
+var ibuRequest;
 var availLang = [
   "Yoda",
   "Pirate",
@@ -149,7 +150,7 @@ fetch("https://api.punkapi.com/v2/beers?per_page=50")
     $(".ibu-slider").attr("min", minIbu);
     // code will split here
     //determine percentage match to array content ABV
-    var abvSliderNumber = 5;
+    var abvSliderNumber = abvRequest;
     var a;
     var b;
 
@@ -183,7 +184,7 @@ fetch("https://api.punkapi.com/v2/beers?per_page=50")
     }
 
     //determine percentage match to array content IBU
-    var ibuSliderNumber = 50;
+    var ibuSliderNumber = ibuRequest;
     var a;
     var b;
 
