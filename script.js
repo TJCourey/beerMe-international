@@ -190,6 +190,7 @@ function fetchData(condition) {
         var abvMatches = [];
         var ibuMatches = [];
 
+<<<<<<< HEAD
         for (var i = 0; i < data.length; i++) {
           console.log("ABV[i}: " + abv[i]);
           var abvN = abv[i];
@@ -259,6 +260,57 @@ function fetchData(condition) {
           //remove duplicates
           console.log(abvMatchesUnique + " abvSET");
           console.log(ibuMatchesUnique + " ibuSET");
+=======
+        //console log to determine output of percentage operation
+        console.log((a / b) * 100);
+
+        //CHANGE MATCH PERCENTAGE HERE!!!
+        //evaluate if the percentage match is  75% or greater, change 75 to whatever percentage accuracy we want
+        if ((a / b) * 100 >= 80) {
+          console.log("75% match or more! ABV");
+          //abvIndex stores the index number of the result from the abv array
+          var abvIndex = abv.indexOf(abvN);
+          //pushes the INDEX NUMBER of the result to a new array
+          abvMatches.push(abvIndex);
+        }
+      }
+
+      //determine percentage match to array content IBU
+      var ibuSliderNumber = ibuRequest;
+      console.log(ibuSliderNumber, "ibu selected");
+      var a;
+      var b;
+
+      for (var i = 0; i < data.length; i++) {
+        var ibuN = ibu[i];
+        //comparison to determain which is bigger, the number the user chooses on the slider or the value of alcohol by volume
+        //necessary for computing percentage correctly, smallest number is divided by larger one
+        if (ibuSliderNumber < ibu[i]) {
+          a = ibuSliderNumber;
+          b = ibu[i];
+          console.log("index number is: " + i);
+          console.log("IBU selected: " + a);
+          console.log("beer IBU is: " + b);
+        } else {
+          a = ibu[i];
+          b = ibuSliderNumber;
+          console.log("IBU selected: " + b);
+          console.log("beer IBU is: " + a);
+        }
+
+        //console log to determine output of percentage operation
+        console.log((a / b) * 100);
+
+        //CHANGE MATCH PERCENTAGE HERE!!!
+        //evaluate if the percentage match is  75% or greater, change 75 to whatever percentage accuracy we want
+        if ((a / b) * 100 >= 80) {
+          console.log("75% match or more! IBU");
+
+          //ibuIndex stores the index number of the result from the abv array
+          var ibuIndex = ibu.indexOf(ibuN);
+          //pushes the INDEX NUMBER of the result to a new array
+          ibuMatches.push(ibuIndex);
+>>>>>>> main
         }
 
         //conditionals to determin matches between BOTH match arrays for final results
@@ -274,11 +326,24 @@ function fetchData(condition) {
           sArray = abvMatchesUnique;
         }
 
+<<<<<<< HEAD
         //this for loop should itterate though all of the contents of the larger array,
         //determin if there is a match,
         //push that match to the finalMatches array
         for (var i = 0; i < lArray.length; i++) {
           var n = sArray.includes(lArray[i]);
+=======
+      //this for loop should itterate though all of the contents of the larger array,
+      //determin if there is a match,
+      //push that match to the finalMatches array
+
+      if (finalMatchesArr.length >= 1) {
+        finalMatchesArr.splice(0, finalMatchesArr.length);
+      }
+
+      for (var i = 0; i < lArray.length; i++) {
+        var n = sArray.includes(lArray[i]);
+>>>>>>> main
 
           if (n) {
             console.log("found a match between the matches arrays!");
@@ -320,10 +385,19 @@ var beer = finalMatchesArr;
 function getFinalBeer() {
   console.log(beer + " this is the final beer");
 
-  let r = beer[Math.floor(Math.random() * beer.length)];
-  console.log("this is the index of the final beer " + r);
+  let r = Math.floor(Math.random() * beer.length);
+  console.log("this is the index of the final beer" + r);
   var selection = beer[r];
+  // if (Number.isInteger(selection)) {
+  //   console.log("beer has been selected!");
+  // } else {
+  //   console.log("got a wonky result");
+  //   getFinalBeer();
+  // }
+
   console.log("This is the beer selected: " + selection);
+
+  console.log("selection is: " + selection);
 
   return selection;
 }
