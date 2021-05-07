@@ -20,30 +20,58 @@
   </head>
   <body>
     <!-- This container will hold just the logo and top image of the site  -->
-    <header class="con1 d-flex justify-content-center">
-      <img src="./references/beer-me-logo.png" alt="beer-me-logo" width="30%" />
-    </header>
-    <p class="inputTitle text-center text-white text-center">So what'll it be?</p>
-    <div class="slidecontainer col-12">
-      <p class="inputText d-flex justify-content-center">How strong do you want your beer? </p>
-      <p class="inputText2 d-flex justify-content-center">ABV%</p>
-      <input type="range" min="0" max="15" value="" class="abv-slider slider d-flex justify-content-center" id="ABV">
-      <br>
-      <br>
-      <p class="inputText d-flex justify-content-center">How bitter do you want your beer?</p>
-      <p class="inputText2 d-flex justify-content-center">IBU</p>
-      <input type="range" min="0" max="150" value="" class="ibu-slider slider d-flex justify-content-center mb-5" id="IBU"> 
-    </div>
-    <div class="col-md-12 text-center mb-5">
-      <button id = "submitButton" type="button" class="btn btn-outline-danger">Submit</button>
-      <button id = "randomButton" type="button" class="btn btn-outline-primary">Random</button>
-    </div>
-  </section>
+    <section id="start-page">
+      <header class="con1 d-flex justify-content-center">
+        <img
+          src="./references/beer-me-logo.png"
+          alt="beer-me-logo"
+          width="30%"
+        />
+      </header>
+      <p class="inputTitle text-center text-white text-center">
+        So what'll it be?
+      </p>
+      <div class="slidecontainer col-12">
+        <p class="inputText d-flex justify-content-center">
+          How strong do you want your beer?
+        </p>
+        <p class="inputText2 d-flex justify-content-center">ABV%</p>
+        <input
+          type="range"
+          min="0"
+          max="15"
+          value=""
+          class="abv-slider slider d-flex justify-content-center"
+          id="ABV"
+        />
+        <br />
+        <br />
+        <p class="inputText d-flex justify-content-center">
+          How bitter do you want your beer?
+        </p>
+        <p class="inputText2 d-flex justify-content-center">IBU</p>
+        <input
+          type="range"
+          min="0"
+          max="150"
+          value=""
+          class="ibu-slider slider d-flex justify-content-center mb-5"
+          id="IBU"
+        />
+      </div>
+      <div class="col-md-12 text-center mb-5">
+        <button id="submitButton" type="button" class="btn btn-outline-danger">
+          Submit
+        </button>
+        <button id="randomButton" type="button" class="btn btn-outline-primary">
+          Random
+        </button>
+      </div>
+    </section>
     <!-- This is the container holding the previous beer choices -->
-    <section class="card-deck">
-  </section>
+    <section class="card-deck"></section>
     <!-- This is where the next page will generate. The first class is the placeholder-->
-    <section>
+    <section id="end-page" class="invisible">
       <div class="beerDisplay mt-4">
         <!--this is the beer image -->
         <h1 class="displayHeader text-white text-center">It's a Match!</h1>
@@ -60,16 +88,20 @@
           <p class="tagText text-center text-white" id="tagline"></p>
           <div class="col-md-12 text-center mb-1">
             <!-- this is the green and red buttons -->
-            <button type="button" class="btn btn-success">Keep</button>
-            <button type="button" class="btn btn-danger">Pass</button>
+            <button id="keepButton" type="button" class="btn btn-success">
+              Keep
+            </button>
+            <button id="passButton" type="button" class="btn btn-danger">
+              Pass
+            </button>
           </div>
         </div>
         <!-- the beers desription is here -->
         <div class="beerDescription text-white text-left pt-4 pl-4 pr-4">
           <p id="beerDesc"></p>
         </div>
-         <!--food pairing -->
-         <div class="foodText food pairing text-orange">
+        <!--food pairing -->
+        <div class="foodText food pairing text-orange">
           <h2 class="foodText text-center pl-2 pr-2">
             <u>Something to snack on</u>
           </h2>

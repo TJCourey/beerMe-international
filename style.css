@@ -62,3 +62,7 @@ body {
 .beerTag {
   font-size: 20px;
 }
+
+.hide {
+  display: none;
+}
