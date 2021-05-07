@@ -376,4 +376,4 @@ $(".ibu-slider").on({
   },
 });
 
-getRandomBeer();
+//getRandomBeer();
