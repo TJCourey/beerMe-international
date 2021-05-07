@@ -1,10 +1,14 @@
+$(document).ready(function () {
+  console.log("Ready");
+  fetchData(false);
+});
 console.log("Hello World");
 var userInput2 = $("#userInput2");
 var submitBtn = $("#sumbitButton");
 var deck = $(".card-deck");
 var randomBtn = $("#randomButton");
-var abvRequest;
-var ibuRequest;
+var abvRequest = 5;
+var ibuRequest = 50;
 var beerDescription = $("#beerDesc");
 var snack = $("#snack");
 var tagline = $("#tagline");
@@ -81,25 +85,25 @@ var availLang = [
 var beerInfo;
 var favBeer = [];
 
-// function translate(requestUrl) {
-//   fetch(requestUrl)
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(function (data) {
-//       console.log(data);
-//     });
-// }
+var translate = function (requestUrl) {
+  fetch(requestUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+    });
+};
 // translate(langUrl(availLang, "coors"));
 
-// function langUrl(arr, beer) {
-//   let r = Math.floor(Math.random() * arr.length);
-//   lang = arr[r];
-//   console.log(lang);
+function langUrl(arr, beer) {
+  let r = Math.floor(Math.random() * arr.length);
+  lang = arr[r];
+  console.log(lang);
 
-//   langUrl = `https://api.funtranslations.com/translate/${lang}.json?text=Bartender,%20I%20would%20like%20to%20order%20a%20beer.%20Make%20it%20a%20${beer}`;
-//   return langUrl;
-// }
+  langUrl = `https://api.funtranslations.com/translate/${lang}.json?text=Bartender,%20I%20would%20like%20to%20order%20a%20beer.%20Make%20it%20a%20${beer}`;
+  return langUrl;
+}
 
 // The following local variables are created for output:
 // minAbv type INT, stores minimum abv of all beers recived from response
@@ -115,9 +119,8 @@ var favBeer = [];
 // fetch to show all availible data from return from PunkedAPI
 
 var finalMatchesArr = [];
-var submitPressed = false;
+var submitPressed = true;
 //var checkFalse = false;
-
 function fetchData(condition) {
   fetch("https://api.punkapi.com/v2/beers")
     .then(function (response) {
@@ -154,13 +157,17 @@ function fetchData(condition) {
 
       //Determine min and max of abv:
       var maxAbv = Math.max(...abv);
+      $(".abv-slider").attr("max", maxAbv);
       var minAbv = Math.min(...abv);
+      $(".abv-slider").attr("min", minAbv);
       console.log("Max abv: " + maxAbv);
       console.log("Min abv: " + minAbv);
 
       //Determine min and max of ibu:
       var maxIbu = Math.max(...ibu);
+      $(".ibu-slider").attr("max", maxIbu);
       var minIbu = Math.min(...ibu);
+      $(".ibu-slider").attr("min", minIbu);
       console.log("Max ibu: " + maxIbu);
       console.log("Min abv: " + minIbu);
 
@@ -168,6 +175,7 @@ function fetchData(condition) {
 
       //determine percentage match to array content ABV
       var abvSliderNumber = abvRequest;
+      console.log(abvSliderNumber, "abv selected");
       var a;
       var b;
 
@@ -203,6 +211,7 @@ function fetchData(condition) {
 
       //determine percentage match to array content IBU
       var ibuSliderNumber = ibuRequest;
+      console.log(ibuSliderNumber, "ibu selected");
       var a;
       var b;
 
@@ -282,7 +291,7 @@ function fetchData(condition) {
 
 //fetchData(checkFalse);
 
-fetchData(submitPressed);
+// fetchData(submitPressed);
 
 var beer = finalMatchesArr;
 
@@ -354,7 +363,9 @@ function getRandomBeer() {
 }
 
 //submit click listener
-$("#submitButton").click(function () {});
+$("#submitButton").click(function () {
+  fetchData(false);
+});
 
 //Random button click listener
 $("#randomButton").click(function () {
@@ -364,16 +375,16 @@ $("#randomButton").click(function () {
 // abv Slider listener
 $(".abv-slider").on({
   change: function () {
-    var abvRequest = $(".abv-slider").val();
+    abvRequest = $(".abv-slider").val();
     console.log(abvRequest, "requested abv");
   },
 });
 // ibu slider listener
 $(".ibu-slider").on({
   change: function () {
-    var ibuRequest = $(".ibu-slider").val();
+    ibuRequest = $(".ibu-slider").val();
     console.log(ibuRequest, "requested ibu");
   },
 });
 
-getRandomBeer();
+// getRandomBeer();
