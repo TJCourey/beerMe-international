@@ -116,7 +116,7 @@ function langUrl(arr, beer) {
 // submitPressed type bool, if true matches are searched for if false matches are not found
 
 // fetch to show all availible data from return from PunkedAPI
-var beerUrl;
+
 var finalMatchesArr = [];
 var submitPressed = true;
 //var checkFalse = false;
