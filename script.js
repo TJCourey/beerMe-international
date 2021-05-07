@@ -13,6 +13,10 @@ var beerDescription = $("#beerDesc");
 var snack = $("#snack");
 var tagline = $("#tagline");
 var image_url = $("#image_url");
+var startPage = document.querySelector("#start-page");
+var endPage = document.querySelector("#end-page");
+var keepButton = $("#keepButton");
+var passButton = $("#passButton");
 
 var availLang = [
   "Yoda",
@@ -93,7 +97,7 @@ var translate = function (requestUrl) {
       console.log(data);
     });
 };
-// translate(langUrl(availLang, "coors"));
+//translate(langUrl(availLang, "coors"));
 
 function langUrl(arr, beer) {
   let r = Math.floor(Math.random() * arr.length);
@@ -282,7 +286,19 @@ function fetchData(condition) {
           }
         }
 
+<<<<<<< HEAD
         getFinalBeer();
+=======
+      var i = getFinalBeer();
+      console.log(i);
+
+      //Error message goes here
+
+      beerDescription.text(data[i].description);
+      snack.text(data[i].food_pairing[0]);
+      tagline.text(data[i].tagline);
+      image_url.attr("src", data[i].image_url);
+>>>>>>> main
 
         //This outputs the list of final matches between both criteria!!!  use array "finalMatches" to select beers
         //from object using the numbers in finalMatches as index numbers in the original return object!
@@ -305,9 +321,8 @@ function getFinalBeer() {
   console.log(beer + " this is the final beer");
 
   let r = beer[Math.floor(Math.random() * beer.length)];
-  console.log("this is the index of the final beer" + r);
+  console.log("this is the index of the final beer " + r);
   var selection = beer[r];
-
   console.log("This is the beer selected: " + selection);
 
   return selection;
@@ -368,25 +383,37 @@ function getRandomBeer() {
       console.log(data);
 
       var randomBeer = Math.floor(Math.random() * data.length);
-      //console.log(randomBeer + " Are we getting this?");
       beerDescription.text(data[randomBeer - 1].description);
       snack.text(data[randomBeer - 1].food_pairing[0]);
       tagline.text(data[randomBeer - 1].tagline);
       image_url.attr("src", data[randomBeer - 1].image_url);
-      //console.log("Name: " + data[randomBeer - 1].name);
-      //console.log("description: " + data[randomBeer - 1].description);
-      //console.log("Tagline: " + data[randomBeer - 1].tagline);
     });
 }
 
 //submit click listener
 $("#submitButton").click(function () {
+<<<<<<< HEAD
   fetchData(true);
+=======
+  startPage.style.display = "none";
+  endPage.classList.remove("invisible");
+  endPage.style.display = "block";
+  fetchData(false);
+>>>>>>> main
 });
 
 //Random button click listener
 $("#randomButton").click(function () {
+  startPage.style.display = "none";
+  endPage.classList.remove("invisible");
+  endPage.style.display = "block";
+
   getRandomBeer();
+});
+
+$("#passButton").click(function () {
+  startPage.style.display = "block";
+  endPage.style.display = "none";
 });
 
 // abv Slider listener
