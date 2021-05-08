@@ -75,6 +75,7 @@
     <!-- This is where the next page will generate. The first class is the placeholder-->
     <section id="end-page" class="invisible">
       <div class="beerDisplay mt-4">
+      <div id= "beerName" class="beerDisplay mt-4">
         <!--this is the beer image -->
         <h1 class="displayHeader text-white text-center">It's a Match!</h1>
         <div class="beerOnDisplay text-center">
@@ -99,7 +100,7 @@
           </div>
         </div>
         <!-- the beers desription is here -->
-        <div class="beerDescription text-white text-left pt-4 pl-4 pr-4">
+        <div class="beerDescription text-white text-center pt-4 pl-4 pr-4">
           <p id="beerDesc"></p>
         </div>
 
@@ -114,16 +115,20 @@
           </p>
         </div>
       </div>
-    </section>
-    <!-- This is the random lang. box, used the same classes as food for styling-->
-    <section>
+      <!-- this is the section for lang. -->
       <div class="pl-3 pr-3">
         <p class="snackTitle text-center"><u>Fun ways to order </u></p>
+        <!-- this is where you will tell the user what languarge its in -->
+          <div id="language"></div>
         <p class="foodText text-center">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi minus
           nostrum magnam cum rem nisi sunt magni! Culpa amet fugit nostrum natus
           tenetur, autem accusamus?
         </p>
+      </div>
+      <!-- error message when no beers match -->
+      <div>
+        <p Class= "snackTitle text-center invisible">~SORRY THERE ARE NO MATCHES~</p>
       </div>
     </section>
     <script
