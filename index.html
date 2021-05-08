@@ -68,16 +68,20 @@
           Random
         </button>
       </div>
+      <section class="card-deck">
+        <div class="card-body"></div>
+        <div class="card-body"></div>
+        <div class="card-body"></div>
+      </section>
     </section>
 
     <!-- This is the container holding the previous beer choices -->
-    <section class="card-deck"></section>
     <!-- This is where the next page will generate. The first class is the placeholder-->
     <section id="end-page" class="invisible">
       <div class="beerDisplay mt-4">
-      <div id= "beerName" class="beerDisplay mt-4">
         <!--this is the beer image -->
         <h1 class="displayHeader text-white text-center">It's a Match!</h1>
+        <div id="beerName" class="beerDisplay mt-4 text-center"></div>
         <div class="beerOnDisplay text-center">
           <img
             class="beerImage img-responsive rounded mx-auto d-block img-thumbnail"
@@ -119,8 +123,10 @@
       <div class="pl-3 pr-3">
         <p class="snackTitle text-center"><u>Fun ways to order </u></p>
         <!-- this is where you will tell the user what languarge its in -->
-          <div id="language"></div>
-        <p class="foodText text-center">
+        <!-- <div id="language">
+        </div> -->
+        <p id="language" class="foodText text-center">Order in:</p>
+        <p id="translated" class="foodText text-center">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi minus
           nostrum magnam cum rem nisi sunt magni! Culpa amet fugit nostrum natus
           tenetur, autem accusamus?
@@ -128,7 +134,9 @@
       </div>
       <!-- error message when no beers match -->
       <div>
-        <p Class= "snackTitle text-center invisible">~SORRY THERE ARE NO MATCHES~</p>
+        <p class="snackTitle text-center invisible">
+          ~SORRY THERE ARE NO MATCHES~
+        </p>
       </div>
     </section>
     <script
