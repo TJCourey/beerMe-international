@@ -1,6 +1,7 @@
 $(document).ready(function () {
   console.log("Ready");
   fetchData(false);
+  displayHist();
 });
 console.log("Hello World");
 var userInput2 = $("#userInput2");
@@ -17,7 +18,9 @@ var startPage = document.querySelector("#start-page");
 var endPage = document.querySelector("#end-page");
 var keepButton = $("#keepButton");
 var passButton = $("#passButton");
-
+var beerName = $("#beerName");
+var beerTrans;
+var cardDeck = $(".card-body");
 var availLang = [
   "Yoda",
   "Pirate",
@@ -95,9 +98,11 @@ var translate = function (requestUrl) {
     })
     .then(function (data) {
       console.log(data);
+      $("#language").text(data.contents.translation);
+      $("#translated").text(data.contents.translated);
     });
 };
-//translate(langUrl(availLang, "coors"));
+//translate(langUrl(availLang, beerTrans));
 
 function langUrl(arr, beer) {
   let r = Math.floor(Math.random() * arr.length);
@@ -292,11 +297,13 @@ function fetchData(condition) {
       console.log(i);
 
       //Error message goes here
-
+      beerTrans = data[i].name;
+      beerName.text(data[i].name);
       beerDescription.text(data[i].description);
       snack.text(data[i].food_pairing[0]);
       tagline.text(data[i].tagline);
       image_url.attr("src", data[i].image_url);
+      beerInfo = data[i];
       //This outputs the list of final matches between both criteria!!!  use array "finalMatches" to select beers
       //from object using the numbers in finalMatches as index numbers in the original return object!
       console.log(
@@ -343,7 +350,7 @@ function storeFav(obj) {
 var displayHist = function () {
   var disArr = JSON.parse(localStorage.getItem("favBeer")) || [];
 
-  $(".card-deck").each(function (i) {
+  $(".card-body").each(function (i) {
     $(this).append(
       `<div class="card">
         <div class="card-body">
@@ -389,24 +396,30 @@ function getRandomBeer() {
       snack.text(data[randomBeer - 1].food_pairing[0]);
       tagline.text(data[randomBeer - 1].tagline);
       image_url.attr("src", data[randomBeer - 1].image_url);
+      beerTrans = data[randomBeer - 1].name;
+      beerName.text(data[randomBeer - 1].name);
+      beerInfo = data[randomBeer - 1];
     });
 }
 
 //submit click listener
 $("#submitButton").click(function () {
   startPage.style.display = "none";
+  // cardDeck.style.display = "none";
   endPage.classList.remove("invisible");
   endPage.style.display = "block";
   fetchData(true);
+  translate(langUrl(availLang, beerTrans));
 });
 
 //Random button click listener
 $("#randomButton").click(function () {
   startPage.style.display = "none";
+  // cardDeck.style.display = "none";
   endPage.classList.remove("invisible");
   endPage.style.display = "block";
-
   getRandomBeer();
+  translate(langUrl(availLang, beerTrans));
 });
 
 $("#passButton").click(function () {
@@ -428,5 +441,7 @@ $(".ibu-slider").on({
     console.log(ibuRequest, "requested ibu");
   },
 });
-
+keepButton.click(function () {
+  storeFav(beerInfo);
+});
 // getRandomBeer();
