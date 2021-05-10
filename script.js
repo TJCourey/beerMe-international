@@ -443,6 +443,8 @@ $(".ibu-slider").on({
   },
 });
 keepButton.click(function () {
+  endPage.style.display = "none";
+  startPage.style.display = "block";
   storeFav(beerInfo);
 });
 // getRandomBeer();

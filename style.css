@@ -68,3 +68,11 @@ body {
 #beerDesc {
   font-size: 165%;
 }
+
+.card {
+  background-color: #29b6f6;
+  font-family: "Germania One";
+  text-align: center;
+  color: white;
+  font-size: 200%;
+}
