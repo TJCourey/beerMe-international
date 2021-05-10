@@ -439,6 +439,7 @@ $(".ibu-slider").on({
   change: function () {
     ibuRequest = $(".ibu-slider").val();
     console.log(ibuRequest, "requested ibu");
+    $("#ibuResponse").text(ibuRequest);
   },
 });
 keepButton.click(function () {
