@@ -1,3 +1,4 @@
+
 # beerMe-international
 
 ## Description
@@ -7,11 +8,10 @@ Provide a short description explaining the what, why, and how of your project. U
 
 ## Usage
 
-Useage is simple and fairly straight forward. Once you have navigated to the website (https://tjcourey.github.io/beerMe-international/) via computer or mobile device, you can select the alcohol content and bitterness via sliders and search for a beer. Alternatively you can select a completely random beer. Once you have searched for a beer it will be displayed to the page along with some information from the brewer as well as a fun way to order the beer.
+Useage is simple and fairly straight forward. Once you have navigated to the website (https://tjcourey.github.io/beerMe-international/) via computer or mobile device, you can select the alcohol content and bitterness via sliders and search for a beer. Alternatively you can select a completely random beer. Once you have searched for a beer it will be displayed to the page along with some information from the brewer as well as a fun way to order the beer.  
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+![Screenshot 2021-05-10 092117](https://user-images.githubusercontent.com/30154584/117683317-2f6c9c80-b171-11eb-8a50-2313db513a0f.png)
+
 
 ## Credits
 
