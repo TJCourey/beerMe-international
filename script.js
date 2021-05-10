@@ -446,5 +446,6 @@ keepButton.click(function () {
   endPage.style.display = "none";
   startPage.style.display = "block";
   storeFav(beerInfo);
+  location.reload();
 });
 // getRandomBeer();
